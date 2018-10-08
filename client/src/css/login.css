@@ -1,0 +1,26 @@
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 0;
+  }
+}
+body {
+  background-image: url ("assets/img/sidebar-3.jpg");
+}
+/* .image {
+  background-image: url ("../assets/img/sidebar-3.jpg");
+  height: 97vh;
+  padding: 0;
+} */
+.Login {
+  padding: 0;
+  height: 100%;
+}
+.show-grid row {
+  padding: 0;
+}

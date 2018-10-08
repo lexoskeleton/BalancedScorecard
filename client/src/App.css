@@ -1,0 +1,59 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {q
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  } */
+
+.Site-content {
+  flex: 1;
+}
+
+a:hover,
+a:active {
+  color: #6a1b9a purple darken-3;
+  text-decoration: none;
+  font-size: 100%;
+  font-weight: bold;
+}
+a:link,
+a:visited {
+  color: #9c27b0 purple;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.nav-wrapper .brand-logo {
+  font-style: normal;
+  font-size: 22px;
+  padding: 0px 0px 0px 20px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.hide {
+  visibility: hidden;
+}
