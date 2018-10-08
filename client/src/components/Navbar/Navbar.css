@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,600);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,600);
+
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+.navbar padding {
+padding-left: 20px;
+}
+
+h3.navbar{
+  font-style: normal;
+  font-size: 22px;
+  padding: 0px 0px 0px 20px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1.5px;
+}
+
+li.navbar{
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
