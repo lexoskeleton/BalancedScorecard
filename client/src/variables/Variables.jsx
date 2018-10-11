@@ -578,6 +578,7 @@ var legendBar = {
   types: ["info"]
 };
 
+
 module.exports = {
   style, // For notifications (App container and Notifications view)
   thArray,

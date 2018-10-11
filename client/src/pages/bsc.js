@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
-
 import { Card } from "../components/Card/Card.jsx";
+import { WordCloud } from "../components/WordCloud/WordCloud.jsx";
 import { StatsCard } from "../components/StatsCard/StatsCard.jsx";
 import {
   dataPie,
@@ -154,6 +154,9 @@ class Dashboard extends Component {
                   <div className="legend">{this.createLegend(legendBar)}</div>
                 }
               />
+            </Col>
+            <Col md={6}>
+                <WordCloud />
             </Col>
           </Row>
         </Grid>

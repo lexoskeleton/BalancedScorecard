@@ -86,6 +86,10 @@ array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
 
+array-shuffle@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/array-shuffle/-/array-shuffle-1.0.1.tgz#7ea4882a356b4bca5f545e0b6e52eaf6d971557a"
+
 array-unique@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
@@ -1912,6 +1916,10 @@ raf@^3.4.0:
   dependencies:
     performance-now "^2.1.0"
 
+randomcolor@^0.4.2:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/randomcolor/-/randomcolor-0.4.4.tgz#5ff56862e97ba03beb0419ff0536ec7aff59eeeb"
+
 range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
@@ -2105,6 +2113,15 @@ react-smooth@~1.0.0:
     prop-types "^15.6.0"
     raf "^3.4.0"
     react-transition-group "^2.5.0"
+
+react-tagcloud@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-tagcloud/-/react-tagcloud-1.3.0.tgz#c88060d7a0bc9fc179a7856f5df2eef0f0637804"
+  dependencies:
+    array-shuffle "^1.0.0"
+    object-assign "^4.1.0"
+    prop-types "^15.6.2"
+    randomcolor "^0.4.2"
 
 react-test-renderer@^16.0.0-0:
   version "16.4.1"
