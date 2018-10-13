@@ -5,6 +5,7 @@ import Register from "./pages/register";
 import Login from "./pages/login";
 import NoMatch from "./pages/NoMatch";
 import Search from "./pages/search";
+import Products from "./pages/Products";
 
 // import "./App.css";
 
@@ -16,6 +17,7 @@ const App = () => (
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Search} />
+          <Route exavt path="/products" component={Products} />
           <Route path="*" component={NoMatch} />
         </Switch>
       </div>
