@@ -21,16 +21,6 @@ mongoose.connect(
   { promiseLibrary: bluebird }
 );
 
-// db.Scorecardt.create({ name: "kpis" })
-//   .then(function(kpis) {
-//     // If saved successfully, print the new Library document to the console
-//     console.log(kpis);
-//   })
-//   .catch(function(err) {
-//     // If an error occurs, print it to the console
-//     console.log(err.message);
-//   });
-
 // Start the API server...
 app.listen(PORT, () => {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

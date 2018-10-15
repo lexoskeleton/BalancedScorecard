@@ -35,7 +35,7 @@ class Dashboard extends Component {
           <Row>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
+                bigIcon={<i className="fa fa-dollar text-warning" />}
                 statsText="Profit"
                 statsValue="$1,000"
                 // statsIcon={<i className="fa fa-refresh" />}
@@ -53,7 +53,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-graph1 text-danger" />}
+                bigIcon={<i className="fa fa-opencart text-danger" />}
                 statsText="Total Sales"
                 statsValue="23"
                 // statsIcon={<i className="fa fa-clock-o" />}
@@ -73,7 +73,7 @@ class Dashboard extends Component {
           <Row>
             <Col md={6}>
               <Card
-                statsIcon="fa fa-history"
+                // statsIcon="fa fa-history"
                 id="chartHours"
                 title="Users Behavior"
                 // category="24 Hours performance"
