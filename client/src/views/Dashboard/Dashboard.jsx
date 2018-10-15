@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
-import { Card } from "../components/Card/Card.jsx";
-import { WordCloud } from "../components/WordCloud/WordCloud.jsx";
-import { StatsCard } from "../components/StatsCard/StatsCard.jsx";
+import { WordCloud } from "../../components/WordCloud/WordCloud.jsx";
+import { Card } from "../../components/Card/Card.jsx";
+// import { Tasks } from "../../components/Tasks/Tasks.jsx";
+import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
+
 import {
   dataPie,
   legendPie,
@@ -15,7 +17,7 @@ import {
   optionsBar,
   responsiveBar,
   legendBar
-} from "../variables/Variables.jsx";
+} from "../../variables/Variables.jsx";
 
 class Dashboard extends Component {
   createLegend(json) {
@@ -111,7 +113,8 @@ class Dashboard extends Component {
                   <div className="legend">{this.createLegend(legendPie)}</div>
                 }
               />
-            </Col><Col md={3}>
+            </Col>
+            <Col md={3}>
               <Card
                 // statsIcon="fa fa-clock-o"
                 title="Employee's Satisfaction "
@@ -156,7 +159,7 @@ class Dashboard extends Component {
               />
             </Col>
             <Col md={6}>
-                <WordCloud />
+              <WordCloud />
             </Col>
           </Row>
         </Grid>

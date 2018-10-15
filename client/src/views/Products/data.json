@@ -1,0 +1,68 @@
+[
+    {
+        "name": "TV",
+        "category": "Electronics",
+        "stockAmount": 55,
+        "totalSales": 1750
+    },
+    {
+        "name": "Socks",
+        "category": "Clothing",
+        "stockAmount": 200,
+        "totalSales": 1800
+    },
+    {
+        "name": "Eyeliner",
+        "category": "Health & Beauty",
+        "stockAmount": 40,
+        "totalSales": 800
+    },
+    {
+        "name": "Nutty Bars",
+        "category": "Food",
+        "stockAmount": 88,
+        "totalSales": 2500
+    },
+    {
+        "name": "Computer",
+        "category": "Electronics",
+        "stockAmount": 20,
+        "totalSales": 3500
+    },
+    {
+        "name": "Potato Chips",
+        "category": "Food",
+        "stockAmount": 0,
+        "totalSales": 0
+    },
+    {
+        "name": "Scarf",
+        "category": "Clothing",
+        "stockAmount": 60,
+        "totalSales": 2600
+    },
+    {
+        "name": "Lip Gloss",
+        "category": "Health & Beauty",
+        "stockAmount": 30,
+        "totalSales": 200
+    },
+    {
+        "name": "Calculator",
+        "category": "Electronics",
+        "stockAmount": 400,
+        "totalSales": 6600
+    },
+    {
+        "name": "Jeans",
+        "category": "Clothing",
+        "stockAmount": 170,
+        "totalSales": 4500
+    },
+    {
+        "name": "Deodorant",
+        "category": "Health & Beauty",
+        "stockAmount": 500,
+        "totalSales": 1500
+    }
+]

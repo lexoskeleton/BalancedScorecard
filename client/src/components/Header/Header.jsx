@@ -3,7 +3,7 @@ import { Navbar } from "react-bootstrap";
 
 import HeaderLinks from "./HeaderLinks.jsx";
 
-// import dashboardRoutes from "../../routes/dashboard.jsx";
+// import dashboardRoutes from "routes/dashboard.jsx";
 
 class Header extends Component {
   constructor(props) {
@@ -58,7 +58,9 @@ class Header extends Component {
     return (
       <Navbar fluid>
         <Navbar.Header>
-          <Navbar.Brand />
+          <Navbar.Brand>
+            {/* <a href="#pablo">{this.getBrand()}</a> */}
+          </Navbar.Brand>
           <Navbar.Toggle onClick={this.mobileSidebarToggle} />
         </Navbar.Header>
         <Navbar.Collapse>

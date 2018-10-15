@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "../css/login.css";
 import API from "../utils/API";
-import imagine from "../assets/img/sidebar-3.jpg";
+import imagine from "../assets/img/back.jpg";
+
+// import imagine from "../assets/img/sidebar-3.jpg";
 import {
   Form,
-  Row,
   Col,
   Button,
   FormGroup,
@@ -14,9 +15,12 @@ import {
 } from "react-bootstrap";
 // import Image from "../images/bee-on-flower
 
-const sectionStyle = {
-  height: "100vh",
-  backgroundColor: "blue"
+// const sectionStyle = {
+//   height: "100vh",
+//   backgroundColor: "blue"
+// };
+const sidebarBackground = {
+  backgroundImage: "url(" + imagine + ")"
 };
 class Login extends Component {
   state = {
@@ -40,7 +44,7 @@ class Login extends Component {
         localStorage.setItem("beeZUser", this.state.username);
         this.setState({ message: "" });
 
-        this.props.history.push("/");
+        this.props.history.push("/home");
       })
       .catch(error => {
         if (error.response.status === 401) {
@@ -56,7 +60,9 @@ class Login extends Component {
     return (
       <div className="Login">
         {/* <Row className="show-grid"> */}
-        <Col md={6} style={sectionStyle} />
+        <Col md={6}>
+          <div className="background" style={sidebarBackground} />
+        </Col>
         <Col md={6}>
           <Form id="signup" onSubmit={this.onSubmit}>
             {message !== "" && (
