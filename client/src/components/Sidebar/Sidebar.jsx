@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-// import HeaderLinks from "../Header/HeaderLinks.jsx";
+import HeaderLinks from "../Header/HeaderLinks.jsx";
 
-import imagine from "../../assets/img/sidebar-3.jpg";
+import imagine from "../../assets/img/back.jpg";
 import logo from "../../assets/img/reactlogo.png";
 
-// import dashboardRoutes from "../../routes/dashboard.jsx";
+import dashboardRoutes from "../../routes/dashboard.jsx";
 
 class Sidebar extends Component {
   constructor(props) {
@@ -38,23 +38,69 @@ class Sidebar extends Component {
       >
         <div className="sidebar-background" style={sidebarBackground} />
         <div className="logo">
-          <a
-            href="https://www.creative-tim.com"
-            className="simple-text logo-mini"
-          >
+          <a href="" className="simple-text logo-mini">
             <div className="logo-img">
               <img src={logo} alt="logo_image" />
             </div>
           </a>
-          <a
-            href="https://www.creative-tim.com"
-            className="simple-text logo-normal"
-          >
-            Creative Tim
+          <a href="" className="simple-text logo-normal">
+            V I S I O N
           </a>
         </div>
         <div className="sidebar-wrapper">
-          {/* <ul className="nav">
+          <ul className="nav">
+            {/* <li className="nav-item">
+              <Link
+                to="/home"
+                className={
+                  window.location.pathname === "/home"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                <i className="pe-7s-home" />
+                HOME
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/dashboard"
+                className={
+                  window.location.pathname === "/dashboard"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                <i className="pe-7s-graph" />
+                DASHBOARD
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/userProfile"
+                className={
+                  window.location.pathname === "/userProfile"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                <i className="pe-7s-user" />
+                USER PROFILE
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/home"
+                className={
+                  window.location.pathname === "/home"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                <i className="pe-7s-news-paper" />
+                TABLE LIST
+              </Link>
+            </li> */}
             {this.state.width <= 991 ? <HeaderLinks /> : null}
             {dashboardRoutes.map((prop, key) => {
               if (!prop.redirect)
@@ -79,7 +125,7 @@ class Sidebar extends Component {
                 );
               return null;
             })}
-          </ul> */}
+          </ul>
         </div>
       </div>
     );

@@ -1,10 +1,7 @@
-//
-// //
-// // // For notifications
-// //
-//
 var defaultWidth =
-  window.screen.width > 768 ? window.screen.width * 1 / 3 : window.screen.width;
+  window.screen.width > 768
+    ? (window.screen.width * 1) / 3
+    : window.screen.width;
 
 var style = {
   Wrapper: {},
@@ -549,9 +546,7 @@ var dataBar = {
     "Nov",
     "Dec"
   ],
-  series: [
-    [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-  ]
+  series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
 };
 var optionsBar = {
   seriesBarDistance: 10,
@@ -577,7 +572,6 @@ var legendBar = {
   names: [],
   types: ["info"]
 };
-
 
 module.exports = {
   style, // For notifications (App container and Notifications view)

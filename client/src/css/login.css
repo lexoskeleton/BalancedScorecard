@@ -9,18 +9,28 @@
     padding: 0;
   }
 }
-body {
-  background-image: url ("assets/img/sidebar-3.jpg");
-}
-/* .image {
-  background-image: url ("../assets/img/sidebar-3.jpg");
-  height: 97vh;
-  padding: 0;
-} */
+
 .Login {
   padding: 0;
   height: 100%;
 }
 .show-grid row {
   padding: 0;
+}
+.background {
+  position: fixed;
+  /* top: 0; */
+  /* bottom: 0; */
+  left: 0;
+
+  /* display: block; */
+  z-index: 1;
+  /* color: #fff; */
+  /* font-weight: 100%; */
+  /* background-position: center center; */
+  height: 100%;
+  width: 50%;
+  /* 
+  background-size: cover; */
+  /* background-position: center center; */
 }
