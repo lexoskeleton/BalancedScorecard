@@ -1,13 +1,19 @@
 import Dashboard from "../views/Dashboard/Dashboard";
 import UserProfile from "../views/UserProfile/UserProfile";
 import Products from "../views/Products/Products";
-// import Typography from "views/Typography/Typography";
+import FileInput from "../views/FileInput/FileInput";
 // import Icons from "views/Icons/Icons";
 // import Maps from "views/Maps/Maps";
 // import Notifications from "views/Notifications/Notifications";
 // import Upgrade from "views/Upgrade/Upgrade";
 
 const dashboardRoutes = [
+  {
+    path: "/fileinput",
+    name: "File Upload",
+    icon: "pe-7s-upload",
+    component: FileInput
+  },
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -26,12 +32,7 @@ const dashboardRoutes = [
     icon: "pe-7s-note2",
     component: Products
   },
-  // {
-  //   path: "/typography",
-  //   name: "Typography",
-  //   icon: "pe-7s-news-paper",
-  //   component: Typography
-  // },
+
   // { path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
   // { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },
   // {
