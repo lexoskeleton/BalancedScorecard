@@ -19,5 +19,9 @@ export default {
   //registers a users contact message into the database.
   contactSubmit: function(contactData) {
     return axios.post("/api/contact", contactData);
+  },
+
+  getProfit: function(profitData){
+    return axios.get("/api/bscd", profitData)
   }
 };

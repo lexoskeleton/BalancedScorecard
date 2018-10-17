@@ -1,7 +1,6 @@
 const router = require("express").Router();
-const bscRoutes = require("./bsc.js");
+const bscRoutes = require("./bsc");
 
-// Authorization routes
-router.use("/bsc", bscRoutes);
+router.use("/bscd", bscRoutes);
 
 module.exports = router;
