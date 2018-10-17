@@ -33,13 +33,29 @@ class Dashboard extends Component {
 
   componentDidMount(){
     this.loadProfit();
+    this.loadRevnue();
+    this.loadSales();
   }
 
   loadProfit = () => {
-    API.getProfit()
+    API.getData()
       .then(res => this.setState({profit: res.data[0].totalProfit}))
       .catch(err => console.log(err));
   };
+
+  loadRevnue = () => {
+    API.getData()
+      .then(res => this.setState({revenue: res.data[0].totalRevenue}))
+      .catch(err => console.log(err));
+  };
+
+  loadSales = () => {
+    API.getData()
+      .then(res => this.setState({totalSales: res.data[0].totalSales}))
+      .catch(err => console.log(err));
+  };
+
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -68,7 +84,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-success" />}
                 statsText="Revenue"
-                statsValue="$1,345"
+                statsValue={this.state.revenue}
                 // statsIcon={<i className="fa fa-calendar-o" />}
                 // statsIconText="Last day"
               />
@@ -77,7 +93,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="fa fa-opencart text-danger" />}
                 statsText="Total Sales"
-                statsValue="23"
+                statsValue={this.state.totalSales}
                 // statsIcon={<i className="fa fa-clock-o" />}
                 // statsIconText="In the last hour"
               />

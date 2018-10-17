@@ -21,7 +21,7 @@ export default {
     return axios.post("/api/contact", contactData);
   },
 
-  getProfit: function(profitData){
+  getData: function(profitData){
     return axios.get("/api/bscd", profitData)
-  }
+  },
 };
