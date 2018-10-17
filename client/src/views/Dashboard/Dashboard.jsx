@@ -5,6 +5,7 @@ import { WordCloud } from "../../components/WordCloud/WordCloud.jsx";
 import { Card } from "../../components/Card/Card.jsx";
 // import { Tasks } from "../../components/Tasks/Tasks.jsx";
 import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
+import API from "../../utils/API.js";
 
 import {
   dataPie,
@@ -20,6 +21,25 @@ import {
 } from "../../variables/Variables.jsx";
 
 class Dashboard extends Component {
+  state = {
+    profit:0,
+    revenue:0,
+    totalSales:0,
+    totalCustomers:0,
+    customerSatisfaction:0,
+    employeeSatisfaction:0,
+    returnedItems:0
+  }
+
+  componentDidMount(){
+    this.loadProfit();
+  }
+
+  loadProfit = () => {
+    API.getProfit()
+      .then(res => this.setState({profit: res.data[0].totalProfit}))
+      .catch(err => console.log(err));
+  };
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -39,7 +59,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="fa fa-dollar text-warning" />}
                 statsText="Profit"
-                statsValue="$1,000"
+                statsValue={this.state.profit}
                 // statsIcon={<i className="fa fa-refresh" />}
                 // statsIconText="Updated now"
               />
@@ -73,7 +93,7 @@ class Dashboard extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md={6}>
+            {/* <Col md={6}>
               <Card
                 // statsIcon="fa fa-history"
                 id="chartHours"
@@ -94,48 +114,7 @@ class Dashboard extends Component {
                   <div className="legend">{this.createLegend(legendSales)}</div>
                 }
               />
-            </Col>
-            <Col md={3}>
-              <Card
-                // statsIcon="fa fa-clock-o"
-                title="Customer's Satisfaction "
-                // category="Last Campaign Performance"
-                // stats="Campaign sent 2 days ago"
-                content={
-                  <div
-                    id="chartPreferences"
-                    className="ct-chart ct-perfect-fourth"
-                  >
-                    <ChartistGraph data={dataPie} type="Pie" />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendPie)}</div>
-                }
-              />
-            </Col>
-            <Col md={3}>
-              <Card
-                // statsIcon="fa fa-clock-o"
-                title="Employee's Satisfaction "
-                // category="Last Campaign Performance"
-                // stats="Campaign sent 2 days ago"
-                content={
-                  <div
-                    id="chartPreferences"
-                    className="ct-chart ct-perfect-fourth"
-                  >
-                    <ChartistGraph data={dataPie} type="Pie" />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendPie)}</div>
-                }
-              />
-            </Col>
-          </Row>
-
-          <Row>
+            </Col> */}
             <Col md={6}>
               <Card
                 id="chartActivity"
@@ -158,6 +137,47 @@ class Dashboard extends Component {
                 }
               />
             </Col>
+            <Col md={3}>
+              <Card
+                // statsIcon="fa fa-clock-o"
+                title="Customer's Satisfaction "
+                // category="Last Campaign Performance"
+                // stats="Campaign sent 2 days ago"
+                content={
+                  <div
+                    id="chartPreferences"
+                    className="ct-chart ct-perfect-fourth"
+                  >
+                    <ChartistGraph data={dataPie} type="Pie" />
+                  </div>
+                }
+                // legend={
+                //   <div className="legend">{this.createLegend(legendPie)}</div>
+                // }
+              />
+            </Col>
+            <Col md={3}>
+              <Card
+                // statsIcon="fa fa-clock-o"
+                title="Employee's Satisfaction "
+                // category="Last Campaign Performance"
+                // stats="Campaign sent 2 days ago"
+                content={
+                  <div
+                    id="chartPreferences"
+                    className="ct-chart ct-perfect-fourth"
+                  >
+                    <ChartistGraph data={dataPie} type="Pie" />
+                  </div>
+                }
+                // legend={
+                //   <div className="legend">{this.createLegend(legendPie)}</div>
+                // }
+              />
+            </Col>
+          </Row>
+
+          <Row>
             <Col md={6}>
               <WordCloud />
             </Col>
