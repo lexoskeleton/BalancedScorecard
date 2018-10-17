@@ -9,6 +9,8 @@ router.route("/")
         totalProfit: { $sum: "$totalProfit" }, 
         totalRevenue: { $sum: "$totalRevenue" }, 
         totalSales: { $sum: "$totalSales" }, 
+        customerSatisfaction: {$avg: "$customerSatisfaction"},
+        employeeSatisfaction: {$avg: "$employeeSatisfaction"},
 
         }
       }

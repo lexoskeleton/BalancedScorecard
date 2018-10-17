@@ -8,7 +8,7 @@ import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
 import API from "../../utils/API.js";
 
 import {
-  dataPie,
+  // dataPie,
   legendPie,
   dataSales,
   optionsSales,
@@ -35,6 +35,8 @@ class Dashboard extends Component {
     this.loadProfit();
     this.loadRevnue();
     this.loadSales();
+    this.loadCusomterSatisfaction();
+    this.loadEmployeeSatisfaction()
   }
 
   loadProfit = () => {
@@ -55,6 +57,20 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
+  loadCusomterSatisfaction = () => {
+    API.getData()
+      .then(res => this.setState({customerSatisfaction: res.data[0].customerSatisfaction}))
+      .catch(err => console.log(err));
+  };
+
+  loadEmployeeSatisfaction = () => {
+    API.getData()
+      .then(res => this.setState({employeeSatisfaction: res.data[0].employeeSatisfaction}))
+      .catch(err => console.log(err));
+  };
+
+  
+
 
   createLegend(json) {
     var legend = [];
@@ -67,6 +83,15 @@ class Dashboard extends Component {
     return legend;
   }
   render() {
+    const dataPieCustomer = {
+      labels: [`${this.state.customerSatisfaction}%`],
+      series: [this.state.customerSatisfaction, (100-this.state.customerSatisfaction)]
+    };
+
+    const dataPieEmployee = {
+      labels: [`${this.state.employeeSatisfaction}%`],
+      series: [this.state.employeeSatisfaction, (100-this.state.employeeSatisfaction)]
+    };
     return (
       <div className="content">
         <Grid fluid>
@@ -164,12 +189,12 @@ class Dashboard extends Component {
                     id="chartPreferences"
                     className="ct-chart ct-perfect-fourth"
                   >
-                    <ChartistGraph data={dataPie} type="Pie" />
+                    <ChartistGraph data={dataPieCustomer} type="Pie" />
                   </div>
                 }
-                // legend={
-                //   <div className="legend">{this.createLegend(legendPie)}</div>
-                // }
+                legend={
+                  <div className="legend">{this.createLegend(legendPie)}</div>
+                }
               />
             </Col>
             <Col md={3}>
@@ -183,12 +208,12 @@ class Dashboard extends Component {
                     id="chartPreferences"
                     className="ct-chart ct-perfect-fourth"
                   >
-                    <ChartistGraph data={dataPie} type="Pie" />
+                    <ChartistGraph data={dataPieEmployee} type="Pie" />
                   </div>
                 }
-                // legend={
-                //   <div className="legend">{this.createLegend(legendPie)}</div>
-                // }
+                legend={
+                  <div className="legend">{this.createLegend(legendPie)}</div>
+                }
               />
             </Col>
           </Row>
