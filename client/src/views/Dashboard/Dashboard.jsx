@@ -3,17 +3,15 @@ import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import { WordCloud } from "../../components/WordCloud/WordCloud.jsx";
 import { Card } from "../../components/Card/Card.jsx";
-// import { Tasks } from "../../components/Tasks/Tasks.jsx";
+// import { Tasks } from "../../components/Task/Tasks.jsx";
 import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
+import { Input } from "../../components/Task/Input.jsx"
+import { FormBtn } from "../../components/Task/FormBtn.jsx"
 import API from "../../utils/API.js";
+import { List, ListItem } from "../../components/List";
+import DeleteBtn from "../../components/DeleteBtn";
 
 import {
-  dataPie,
-  legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales,
   dataBar,
   optionsBar,
   responsiveBar,
@@ -22,24 +20,93 @@ import {
 
 class Dashboard extends Component {
   state = {
-    profit:0,
-    revenue:0,
-    totalSales:0,
-    totalCustomers:0,
-    customerSatisfaction:0,
-    employeeSatisfaction:0,
-    returnedItems:0
+    profit: 0,
+    revenue: 0,
+    totalSales: 0,
+    customerRetentionRate: 0,
+    customerSatisfaction: 0,
+    employeeSatisfaction: 0,
+    returnedItems: 0,
+    title: "",
+    tasks_title: []
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.loadProfit();
+    this.loadRevnue();
+    this.loadSales();
+    this.loadCusomterSatisfaction();
+    this.loadEmployeeSatisfaction();
+    this.loadCustomerRetentionRate();
+    this.loadTasks();
   }
 
   loadProfit = () => {
-    API.getProfit()
-      .then(res => this.setState({profit: res.data[0].totalProfit}))
+    API.getData()
+      .then(res => this.setState({ profit: res.data[0].totalProfit }))
       .catch(err => console.log(err));
   };
+
+  loadRevnue = () => {
+    API.getData()
+      .then(res => this.setState({ revenue: res.data[0].totalRevenue }))
+      .catch(err => console.log(err));
+  };
+
+  loadSales = () => {
+    API.getData()
+      .then(res => this.setState({ totalSales: res.data[0].totalSales }))
+      .catch(err => console.log(err));
+  };
+
+  loadCusomterSatisfaction = () => {
+    API.getData()
+      .then(res => this.setState({ customerSatisfaction: res.data[0].customerSatisfaction }))
+      .catch(err => console.log(err));
+  };
+
+  loadEmployeeSatisfaction = () => {
+    API.getData()
+      .then(res => this.setState({ employeeSatisfaction: res.data[0].employeeSatisfaction }))
+      .catch(err => console.log(err));
+  };
+
+  loadCustomerRetentionRate = () => {
+    API.getData()
+      .then(res => this.setState({ customerRetentionRate: res.data[0].customerRetentionRate }))
+      .catch(err => console.log(err));
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  loadTasks = () => {
+    API.getAllTasks()
+      .then(res => this.setState({ tasks_title: res.data }))
+      .catch(err => console.log(err));
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.title) {
+      API.postTask({
+        title: this.state.title,
+      })
+        .then(res => this.loadTasks())
+        .catch(err => console.log(err));
+    }
+  };
+
+  deleteTask = id => {
+    API.deleteTask(id)
+      .then(res => this.loadTasks())
+      .catch(err => console.log(err));
+  };
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -51,6 +118,10 @@ class Dashboard extends Component {
     return legend;
   }
   render() {
+    const dataPieEmployee = {
+      labels: [`${Math.round(100*this.state.employeeSatisfaction)/100}%`, `${Math.round(100*(100 - this.state.employeeSatisfaction))/100}%`],
+      series: [this.state.employeeSatisfaction, Math.round(100*(100 - this.state.employeeSatisfaction))/100]
+    };
     return (
       <div className="content">
         <Grid fluid>
@@ -59,69 +130,36 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="fa fa-dollar text-warning" />}
                 statsText="Profit"
-                statsValue={this.state.profit}
-                // statsIcon={<i className="fa fa-refresh" />}
-                // statsIconText="Updated now"
+                statsValue={`$ ${Math.round(this.state.profit).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} USD`}
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-success" />}
                 statsText="Revenue"
-                statsValue="$1,345"
-                // statsIcon={<i className="fa fa-calendar-o" />}
-                // statsIconText="Last day"
+                statsValue={`$ ${Math.round(this.state.revenue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} USD`}
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="fa fa-opencart text-danger" />}
-                statsText="Total Sales"
-                statsValue="23"
-                // statsIcon={<i className="fa fa-clock-o" />}
-                // statsIconText="In the last hour"
+                statsText="Sales"
+                statsValue={`${Math.round(this.state.totalSales).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} Items`}
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="fa fa-user text-info" />}
-                statsText="Total Customers"
-                statsValue="+45"
-                // statsIcon={<i className="fa fa-refresh" />}
-                // statsIconText="Updated now"
+                statsText="Customer's Retention Rate"
+                statsValue={`${Math.round(100*this.state.customerRetentionRate)/100}%`}
               />
             </Col>
           </Row>
           <Row>
             {/* <Col md={6}>
               <Card
-                // statsIcon="fa fa-history"
-                id="chartHours"
-                title="Users Behavior"
-                // category="24 Hours performance"
-                // stats="Updated 3 minutes ago"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataSales}
-                      type="Line"
-                      options={optionsSales}
-                      responsiveOptions={responsiveSales}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendSales)}</div>
-                }
-              />
-            </Col> */}
-            <Col md={6}>
-              <Card
                 id="chartActivity"
                 title="Returned Items"
-                // category="All products including Taxes"
-                // stats="Data information certified"
-                // statsIcon="fa fa-check"
                 content={
                   <div className="ct-chart">
                     <ChartistGraph
@@ -136,50 +174,75 @@ class Dashboard extends Component {
                   <div className="legend">{this.createLegend(legendBar)}</div>
                 }
               />
-            </Col>
-            <Col md={3}>
+            </Col> */}
+            <Col md={6}>
               <Card
-                // statsIcon="fa fa-clock-o"
-                title="Customer's Satisfaction "
-                // category="Last Campaign Performance"
-                // stats="Campaign sent 2 days ago"
+                title="Employee's Productivity"
                 content={
                   <div
                     id="chartPreferences"
                     className="ct-chart ct-perfect-fourth"
                   >
-                    <ChartistGraph data={dataPie} type="Pie" />
+                    <ChartistGraph data={dataPieEmployee} type="Pie" />
                   </div>
                 }
-                // legend={
-                //   <div className="legend">{this.createLegend(legendPie)}</div>
-                // }
               />
             </Col>
-            <Col md={3}>
-              <Card
-                // statsIcon="fa fa-clock-o"
-                title="Employee's Satisfaction "
-                // category="Last Campaign Performance"
-                // stats="Campaign sent 2 days ago"
+            <Col md={6}>
+            <Card
+                title="Converting Words"
                 content={
-                  <div
-                    id="chartPreferences"
-                    className="ct-chart ct-perfect-fourth"
-                  >
-                    <ChartistGraph data={dataPie} type="Pie" />
+                  <div>
+                    <WordCloud />
                   </div>
                 }
-                // legend={
-                //   <div className="legend">{this.createLegend(legendPie)}</div>
-                // }
               />
             </Col>
           </Row>
-
           <Row>
-            <Col md={6}>
-              <WordCloud />
+            <Col md={9}>
+              <Card
+                title="Tasks"
+                content={
+                  <div className="table-full-width">
+                    <form>
+                      <div>
+                      <Input
+                        value={this.state.title}
+                        onChange={this.handleInputChange}
+                        name="title"
+                        placeholder="New Task"
+                      />
+                      <FormBtn
+                        disabled={!(this.state.title)}
+                        onClick={this.handleFormSubmit}
+                      >
+                        Add
+                      </FormBtn>
+                      </div>
+                    </form>
+                    <hr />
+                    {this.state.tasks_title.length ? (
+                      <List>
+                      {this.state.tasks_title.map(task => {
+                        return (
+                          <ListItem key={this.tasks_title._id}>
+                            <a href={"/books/" + this.tasks_title._id}>
+                              <strong>
+                                {this.tasks_title.title}
+                              </strong>
+                            </a>
+                            <DeleteBtn onClick={() => this.deleteTask(this.tasks_title._id)} />
+                          </ListItem>
+                        );
+                      })}
+                    </List>
+                  ) : (
+                    <h3>No Results to Display</h3>
+                    )}
+                  </div>
+                }
+              />
             </Col>
           </Row>
         </Grid>

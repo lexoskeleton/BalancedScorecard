@@ -537,7 +537,7 @@ var dataBar = {
     "Feb",
     "Mar",
     "Apr",
-    "Mai",
+    "May",
     "Jun",
     "Jul",
     "Aug",
@@ -546,7 +546,7 @@ var dataBar = {
     "Nov",
     "Dec"
   ],
-  series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
+  series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 1895]]
 };
 var optionsBar = {
   seriesBarDistance: 10,
