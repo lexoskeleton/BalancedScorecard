@@ -11,13 +11,6 @@ import API from "../../utils/API.js";
 import { List, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
 
-import {
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  legendBar
-} from "../../variables/Variables.jsx";
-
 class Dashboard extends Component {
   state = {
     profit: 0,
@@ -156,25 +149,6 @@ class Dashboard extends Component {
             </Col>
           </Row>
           <Row>
-            {/* <Col md={6}>
-              <Card
-                id="chartActivity"
-                title="Returned Items"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
-                }
-              />
-            </Col> */}
             <Col md={6}>
               <Card
                 title="Employee's Productivity"
@@ -226,13 +200,13 @@ class Dashboard extends Component {
                       <List>
                       {this.state.tasks_title.map(task => {
                         return (
-                          <ListItem key={this.tasks_title._id}>
-                            <a href={"/books/" + this.tasks_title._id}>
+                          <ListItem key={task._id}>
+                            <a href={"/books/" + task._id}>
                               <strong>
-                                {this.tasks_title.title}
+                                {task.title}
                               </strong>
                             </a>
-                            <DeleteBtn onClick={() => this.deleteTask(this.tasks_title._id)} />
+                            <DeleteBtn onClick={() => this.deleteTask(task._id)} />
                           </ListItem>
                         );
                       })}

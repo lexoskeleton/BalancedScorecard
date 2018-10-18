@@ -21,7 +21,7 @@ export default {
     return axios.get("/api/task");
   },
 
-  postTask: function () {
+  postTask: function (task) {
     return axios.post("/api/task");
   },
 
