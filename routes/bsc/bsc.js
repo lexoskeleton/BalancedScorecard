@@ -5,13 +5,13 @@ router.route("/")
   .get(function (req, res) {
     db.KPI.aggregate(
       [{
-        $group: { _id: null, 
-        totalProfit: { $sum: "$totalProfit" }, 
+        $group: {_id: null, 
+        totalProfit: {$sum: "$totalProfit"},
         totalRevenue: { $sum: "$totalRevenue" }, 
         totalSales: { $sum: "$totalSales" }, 
         customerSatisfaction: {$avg: "$customerSatisfaction"},
+        customerRetentionRate:{$avg: "$customerRetentionRate"},
         employeeSatisfaction: {$avg: "$employeeSatisfaction"},
-
         }
       }
     ], function (err, dbKPI){

@@ -26,8 +26,6 @@ const data = [
 
 export const WordCloud = () => (
   <div>
-    <h4> Words that Convert</h4>
-    <hr />
     <TagCloud minSize={10} maxSize={35} tags={data} className="simple-cloud" />
   </div>
 );
