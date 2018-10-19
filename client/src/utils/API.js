@@ -22,7 +22,7 @@ export default {
   },
 
   postTask: function (task) {
-    return axios.post("/api/task");
+    return axios.post("/api/task", task);
   },
 
   deleteTask: function (id) {
