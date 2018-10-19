@@ -20,8 +20,7 @@ class Dashboard extends Component {
     customerSatisfaction: 0,
     employeeSatisfaction: 0,
     returnedItems: 0,
-    title: "",
-    tasks_title: []
+    tasks: []
   }
 
   componentDidMount() {
@@ -79,15 +78,15 @@ class Dashboard extends Component {
 
   loadTasks = () => {
     API.getAllTasks()
-      .then(res => this.setState({ tasks_title: res.data }))
+      .then(res => this.setState({ tasks: res.data }))
       .catch(err => console.log(err));
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title) {
+    if (this.state.tasks_title) {
       API.postTask({
-        title: this.state.title,
+        tasks_title: this.state.tasks_title,
       })
         .then(res => this.loadTasks())
         .catch(err => console.log(err));
@@ -184,11 +183,11 @@ class Dashboard extends Component {
                       <Input
                         value={this.state.title}
                         onChange={this.handleInputChange}
-                        name="title"
+                        name="tasks_title"
                         placeholder="New Task"
                       />
                       <FormBtn
-                        disabled={!(this.state.title)}
+                        disabled={!(this.state.tasks_title)}
                         onClick={this.handleFormSubmit}
                       >
                         Add
@@ -196,14 +195,14 @@ class Dashboard extends Component {
                       </div>
                     </form>
                     <hr />
-                    {this.state.tasks_title.length ? (
+                    {this.state.tasks.length ? (
                       <List>
-                      {this.state.tasks_title.map(task => {
+                      {this.state.tasks.map(task => {
                         return (
                           <ListItem key={task._id}>
                             <a href={"/books/" + task._id}>
                               <strong>
-                                {task.title}
+                                {task.tasks_title}
                               </strong>
                             </a>
                             <DeleteBtn onClick={() => this.deleteTask(task._id)} />

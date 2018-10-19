@@ -25,8 +25,8 @@ export default {
     return axios.get("/api/task");
   },
 
-  postTask: function(task) {
-    return axios.post("/api/task");
+  postTask: function (task) {
+    return axios.post("/api/task", task);
   },
 
   deleteTask: function(id) {
