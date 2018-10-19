@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import {
   ControlLabel,
   Label,
-  CSVReader,
+  // CSVReader,
   FormControl,
   FormGroup
 } from "react-bootstrap";
 import "../../css/products.css";
 
 class FileInput extends Component {
-  addFile = (event: any): void => {
-    console.log(event.target.files[0]);
-  };
+  // addFile = (event: any): void => {
+  //   console.log(event.target.files[0]);
+  // };
 
   render() {
     return (
@@ -25,7 +25,7 @@ class FileInput extends Component {
               id="fileUpload"
               type="file"
               accept=".pdf"
-              onChange={this.addFile}
+              // onChange={this.addFile}
               style={{ display: "none" }}
             />
           </ControlLabel>

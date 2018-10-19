@@ -49,58 +49,6 @@ class Sidebar extends Component {
         </div>
         <div className="sidebar-wrapper">
           <ul className="nav">
-            {/* <li className="nav-item">
-              <Link
-                to="/home"
-                className={
-                  window.location.pathname === "/home"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                <i className="pe-7s-home" />
-                HOME
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/dashboard"
-                className={
-                  window.location.pathname === "/dashboard"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                <i className="pe-7s-graph" />
-                DASHBOARD
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/userProfile"
-                className={
-                  window.location.pathname === "/userProfile"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                <i className="pe-7s-user" />
-                USER PROFILE
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/home"
-                className={
-                  window.location.pathname === "/home"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                <i className="pe-7s-news-paper" />
-                TABLE LIST
-              </Link>
-            </li> */}
             {this.state.width <= 991 ? <HeaderLinks /> : null}
             {dashboardRoutes.map((prop, key) => {
               if (!prop.redirect)

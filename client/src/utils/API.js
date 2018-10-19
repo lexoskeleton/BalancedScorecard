@@ -1,14 +1,6 @@
 import axios from "axios";
 
 export default {
-  // searchPlants: function(param) {
-  //   const commonName = param.commonName || null;
-
-  //   if (param.commonName) {
-  //     plantData.commonName = { $regex: commonName, $options: "i" };
-  //   }
-  // },
-  //checks login credentials against database.
   loginSubmit: function(loginData) {
     return axios.post("/api/auth/login", loginData);
   },
@@ -19,5 +11,24 @@ export default {
   //registers a users contact message into the database.
   contactSubmit: function(contactData) {
     return axios.post("/api/contact", contactData);
+  },
+  getUser: function(contactData) {
+    return axios.get("/api/contact", contactData);
+  },
+
+  getData: function(profitData) {
+    return axios.get("/api/bscd", profitData);
+  },
+
+  getAllTasks: function() {
+    return axios.get("/api/task");
+  },
+
+  postTask: function(task) {
+    return axios.post("/api/task");
+  },
+
+  deleteTask: function(id) {
+    return axios.delete("/api/task/" + id);
   }
 };
