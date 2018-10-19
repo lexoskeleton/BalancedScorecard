@@ -31,6 +31,7 @@
     "express": "^4.15.4",
     "immutability-helper": "^2.7.1",
     "jsonwebtoken": "^8.3.0",
+    "jspdf": "^1.4.1",
     "mongoose": "^5.0.11",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",

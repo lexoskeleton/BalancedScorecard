@@ -3,7 +3,6 @@ import "../css/login.css";
 import API from "../utils/API";
 import imagine from "../assets/img/back.jpg";
 
-// import imagine from "../assets/img/sidebar-3.jpg";
 import {
   Form,
   Col,
@@ -13,12 +12,7 @@ import {
   ControlLabel,
   ButtonToolbar
 } from "react-bootstrap";
-// import Image from "../images/bee-on-flower
 
-// const sectionStyle = {
-//   height: "100vh",
-//   backgroundColor: "blue"
-// };
 const sidebarBackground = {
   backgroundImage: "url(" + imagine + ")"
 };
