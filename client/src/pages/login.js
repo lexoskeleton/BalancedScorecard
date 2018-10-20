@@ -14,7 +14,8 @@ import {
 } from "react-bootstrap";
 
 const sidebarBackground = {
-  backgroundImage: "url(" + imagine + ")"
+  backgroundImage: "url(" + imagine + ")",
+  color: "white"
 };
 class Login extends Component {
   state = {
@@ -55,7 +56,10 @@ class Login extends Component {
       <div className="Login">
         {/* <Row className="show-grid"> */}
         <Col md={6}>
-          <div className="background" style={sidebarBackground} />
+          <div className="background" style={sidebarBackground}>
+            <h1>Advanced Business Dashboard</h1>
+            <p>Turn your data into insightful digital dashboards in minutes.</p>
+          </div>
         </Col>
         <Col md={6}>
           <Form id="signup" onSubmit={this.onSubmit}>
