@@ -35,6 +35,9 @@ const kpiSchema = new Schema({
   customerRetentionRate: {
     type: Number,
   },
+  stockTotal:{
+    type:Number
+  }
   // returnedItems: {
   //   type: Number,
   //   required: true,
