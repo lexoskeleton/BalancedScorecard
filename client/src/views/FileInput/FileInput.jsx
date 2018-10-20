@@ -6,12 +6,49 @@ import {
   FormControl,
   FormGroup
 } from "react-bootstrap";
+import API from "../../utils/API.js";
 import "../../css/products.css";
+
 
 class FileInput extends Component {
   // addFile = (event: any): void => {
   //   console.log(event.target.files[0]);
   // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      csv: ""
+    };
+    // this.fileUpload = this.fileUpload.bind(this);
+  }
+  fileUpload(e) {
+    let files = e.target.files[0]; 
+    console.log(files);
+  
+
+  const data = new FormData();
+  data.append('file', this.files);
+  data.append('filename', this.value);
+  console.log(data);
+
+  if (files === ".csv") {
+    API.postCSV
+    .then((response) => {
+      response.json().then((body) => {
+        this.setState({ csv: `http://localhost:3000/${body.file}` });
+      });
+    });
+  }
+
+  // fetch('http://localhost:3000/fileUpload', {
+  //   method: 'POST',
+  //   body: data,
+  // }).then((response) => {
+  //   response.json().then((body) => {
+  //     this.setState({ csv: `http://localhost:3000/${body.file}` });
+  //   });
+  // });
+}
 
   render() {
     return (
@@ -19,25 +56,17 @@ class FileInput extends Component {
         <FormGroup>
           <ControlLabel htmlFor="fileUpload" style={{ cursor: "pointer" }}>
             <h3>
-              <Label bsStyle="success">Add file</Label>
+              <Label bsStyle="success">Add CSV file</Label>
             </h3>
             <FormControl
               id="fileUpload"
               type="file"
-              accept=".pdf"
-              // onChange={this.addFile}
+              accept=".csv"
+              onChange={this.fileUpload.bind(this)}
               style={{ display: "none" }}
             />
           </ControlLabel>
         </FormGroup>
-        {/* <CSVReader
-          cssClass="csv-input"
-          accept=".csv"
-          label="Select CSV with secret Death Star statistics"
-          onFileLoaded={this.handleForce}
-          onError={this.handleDarkSideForce}
-          inputId="ObiWan"
-        /> */}
       </div>
     );
   }

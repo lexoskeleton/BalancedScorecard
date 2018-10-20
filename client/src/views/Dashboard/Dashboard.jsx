@@ -3,13 +3,9 @@ import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import { WordCloud } from "../../components/WordCloud/WordCloud.jsx";
 import { Card } from "../../components/Card/Card.jsx";
-// import { Tasks } from "../../components/Task/Tasks.jsx";
 import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
-import { Input } from "../../components/Task/Input.jsx"
-import { FormBtn } from "../../components/Task/FormBtn.jsx"
+
 import API from "../../utils/API.js";
-import { List, ListItem } from "../../components/List";
-import DeleteBtn from "../../components/DeleteBtn";
 
 class Dashboard extends Component {
   state = {
@@ -22,7 +18,7 @@ class Dashboard extends Component {
     returnedItems: 0,
     title: "",
     tasks_title: []
-  }
+  };
 
   componentDidMount() {
     this.loadProfit();
@@ -31,7 +27,7 @@ class Dashboard extends Component {
     this.loadCusomterSatisfaction();
     this.loadEmployeeSatisfaction();
     this.loadCustomerRetentionRate();
-    this.loadTasks();
+    // this.loadTasks();
   }
 
   loadProfit = () => {
@@ -54,49 +50,31 @@ class Dashboard extends Component {
 
   loadCusomterSatisfaction = () => {
     API.getData()
-      .then(res => this.setState({ customerSatisfaction: res.data[0].customerSatisfaction }))
+      .then(res =>
+        this.setState({
+          customerSatisfaction: res.data[0].customerSatisfaction
+        })
+      )
       .catch(err => console.log(err));
   };
 
   loadEmployeeSatisfaction = () => {
     API.getData()
-      .then(res => this.setState({ employeeSatisfaction: res.data[0].employeeSatisfaction }))
+      .then(res =>
+        this.setState({
+          employeeSatisfaction: res.data[0].employeeSatisfaction
+        })
+      )
       .catch(err => console.log(err));
   };
 
   loadCustomerRetentionRate = () => {
     API.getData()
-      .then(res => this.setState({ customerRetentionRate: res.data[0].customerRetentionRate }))
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  loadTasks = () => {
-    API.getAllTasks()
-      .then(res => this.setState({ tasks_title: res.data }))
-      .catch(err => console.log(err));
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title) {
-      API.postTask({
-        title: this.state.title,
-      })
-        .then(res => this.loadTasks())
-        .catch(err => console.log(err));
-    }
-  };
-
-  deleteTask = id => {
-    API.deleteTask(id)
-      .then(res => this.loadTasks())
+      .then(res =>
+        this.setState({
+          customerRetentionRate: res.data[0].customerRetentionRate
+        })
+      )
       .catch(err => console.log(err));
   };
 
@@ -112,8 +90,14 @@ class Dashboard extends Component {
   }
   render() {
     const dataPieEmployee = {
-      labels: [`${Math.round(100*this.state.employeeSatisfaction)/100}%`, `${Math.round(100*(100 - this.state.employeeSatisfaction))/100}%`],
-      series: [this.state.employeeSatisfaction, Math.round(100*(100 - this.state.employeeSatisfaction))/100]
+      labels: [
+        `${Math.round(100 * this.state.employeeSatisfaction) / 100}%`,
+        `${Math.round(100 * (100 - this.state.employeeSatisfaction)) / 100}%`
+      ],
+      series: [
+        this.state.employeeSatisfaction,
+        Math.round(100 * (100 - this.state.employeeSatisfaction)) / 100
+      ]
     };
     return (
       <div className="content">
@@ -123,28 +107,36 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="fa fa-dollar text-warning" />}
                 statsText="Profit"
-                statsValue={`$ ${Math.round(this.state.profit).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} USD`}
+                statsValue={`$ ${Math.round(this.state.profit)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} USD`}
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-success" />}
                 statsText="Revenue"
-                statsValue={`$ ${Math.round(this.state.revenue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} USD`}
+                statsValue={`$ ${Math.round(this.state.revenue)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} USD`}
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="fa fa-opencart text-danger" />}
                 statsText="Sales"
-                statsValue={`${Math.round(this.state.totalSales).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} Items`}
+                statsValue={`${Math.round(this.state.totalSales)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} Items`}
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="fa fa-user text-info" />}
                 statsText="Customer's Retention Rate"
-                statsValue={`${Math.round(100*this.state.customerRetentionRate)/100}%`}
+                statsValue={`${Math.round(
+                  100 * this.state.customerRetentionRate
+                ) / 100}%`}
               />
             </Col>
           </Row>
@@ -163,7 +155,7 @@ class Dashboard extends Component {
               />
             </Col>
             <Col md={6}>
-            <Card
+              <Card
                 title="Converting Words"
                 content={
                   <div>
@@ -173,7 +165,7 @@ class Dashboard extends Component {
               />
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col md={9}>
               <Card
                 title="Tasks"
@@ -218,7 +210,7 @@ class Dashboard extends Component {
                 }
               />
             </Col>
-          </Row>
+          </Row> */}
         </Grid>
       </div>
     );
