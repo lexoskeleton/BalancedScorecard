@@ -29,6 +29,7 @@
     "csvtojson": "^2.0.8",
     "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.15.4",
+    "express-fileupload": "^1.0.0",
     "immutability-helper": "^2.7.1",
     "jsonwebtoken": "^8.3.0",
     "jspdf": "^1.4.1",

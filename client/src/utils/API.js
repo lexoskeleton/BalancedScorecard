@@ -31,5 +31,13 @@ export default {
 
   deleteTask: function(id) {
     return axios.delete("/api/task/" + id);
+  },
+
+  postCSV: function(csv) {
+    return axios.post("/api/fileUpload", csv);
+  },
+
+  getCSV: function(csv) {
+    return axios.get("/api/fileUpload", csv);
   }
 };
