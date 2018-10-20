@@ -11,8 +11,8 @@ const taskRoutes = require("./task");
 router.use("/api", authRoutes);
 router.use("/api", contactRoutes);
 router.use("/api", kpisRoutes);
-router.use("/api", bscRoutes)
-router.use("/api", taskRoutes)
+router.use("/api", bscRoutes);
+router.use("/api", taskRoutes);
 // router.use("api", fileInputRoutes);
 
 //// If no API routes are hit, send the React app

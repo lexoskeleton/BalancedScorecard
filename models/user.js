@@ -28,8 +28,7 @@ userSchema.pre("save", function(next) {
     return next();
   }
 });
-//Thes functions appear to break when rewritten in ES6.
-//Can you eliminate the ".methods"? NOPE!
+
 userSchema.methods.comparePassword = function(passw, cb) {
   bcrypt.compare(passw, this.password, function(err, isMatch) {
     if (err) {

@@ -12,10 +12,9 @@ export default {
   contactSubmit: function(contactData) {
     return axios.post("/api/contact", contactData);
   },
-
-  getUser: function(contactData) {
-    return axios.get("/api/contact", contactData);
-  },
+  // getUser: function(nameUser) {
+  //   return axios.get("/api/auth/register", nameUser);
+  // },
 
   getData: function(profitData) {
     return axios.get("/api/bscd", profitData);
@@ -25,8 +24,8 @@ export default {
     return axios.get("/api/task");
   },
 
-  postTask: function (task) {
-    return axios.post("/api/task", task);
+  postTask: function(task) {
+    return axios.post("/api/task");
   },
 
   deleteTask: function(id) {

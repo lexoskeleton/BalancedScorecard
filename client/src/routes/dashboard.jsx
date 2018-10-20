@@ -3,7 +3,7 @@ import UserProfile from "../views/UserProfile/UserProfile";
 import Products from "../views/Products/Products";
 import FileInput from "../views/FileInput/FileInput";
 import PDFfile from "../views/PDFfile/PDFfile";
-import Task from "../views/Task/Task"
+import Task from "../views/Task/Task";
 // import Icons from "views/Icons/Icons";
 // import Maps from "views/Maps/Maps";
 // import Notifications from "views/Notifications/Notifications";

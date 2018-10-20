@@ -48,7 +48,7 @@ class UserProfile extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Username",
-                          defaultValue: "Me"
+                          defaultValue: "me"
                         },
                         {
                           label: "Email address",
