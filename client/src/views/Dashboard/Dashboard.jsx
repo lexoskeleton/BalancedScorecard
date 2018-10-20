@@ -30,7 +30,7 @@ class Dashboard extends Component {
     this.loadCusomterSatisfaction();
     this.loadEmployeeSatisfaction();
     this.loadCustomerRetentionRate();
-    this.loadTasks();
+    // this.loadTasks();
   }
 
   loadProfit = () => {
@@ -69,35 +69,35 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
-  loadTasks = () => {
-    API.getAllTasks()
-      .then(res => this.setState({ tasks: res.data }))
-      .catch(err => console.log(err));
-  };
+  // loadTasks = () => {
+  //   API.getAllTasks()
+  //     .then(res => this.setState({ tasks: res.data }))
+  //     .catch(err => console.log(err));
+  // };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.tasks_title) {
-      API.postTask({
-        tasks_title: this.state.tasks_title,
-      })
-        .then(res => this.loadTasks())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.tasks_title) {
+  //     API.postTask({
+  //       tasks_title: this.state.tasks_title,
+  //     })
+  //       .then(res => this.loadTasks())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
-  deleteTask = id => {
-    API.deleteTask(id)
-      .then(res => this.loadTasks())
-      .catch(err => console.log(err));
-  };
+  // deleteTask = id => {
+  //   API.deleteTask(id)
+  //     .then(res => this.loadTasks())
+  //     .catch(err => console.log(err));
+  // };
 
   createLegend(json) {
     var legend = [];
@@ -172,7 +172,7 @@ class Dashboard extends Component {
               />
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col md={9}>
               <Card
                 title="Tasks"
@@ -217,7 +217,7 @@ class Dashboard extends Component {
                 }
               />
             </Col>
-          </Row>
+          </Row> */}
         </Grid>
       </div>
     );
