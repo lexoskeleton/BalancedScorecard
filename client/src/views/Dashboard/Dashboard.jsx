@@ -5,11 +5,11 @@ import { WordCloud } from "../../components/WordCloud/WordCloud.jsx";
 import { Card } from "../../components/Card/Card.jsx";
 // import { Tasks } from "../../components/Task/Tasks.jsx";
 import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
-import { Input } from "../../components/Task/Input.jsx"
-import { FormBtn } from "../../components/Task/FormBtn.jsx"
+// import { Input } from "../../components/Task/Input.jsx"
+// import { FormBtn } from "../../components/Task/FormBtn.jsx"
 import API from "../../utils/API.js";
-import { List, ListItem } from "../../components/List";
-import DeleteBtn from "../../components/DeleteBtn";
+// import { List, ListItem } from "../../components/List";
+// import DeleteBtn from "../../components/DeleteBtn";
 
 class Dashboard extends Component {
   state = {
