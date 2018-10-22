@@ -32,6 +32,9 @@ const kpiSchema = new Schema({
   employeeSatisfaction: {
     type: Number,
   },
+  stockTotal: {
+    type: Number
+  }
   // returnedItems: {
   //   type: Number,
   //   required: true,

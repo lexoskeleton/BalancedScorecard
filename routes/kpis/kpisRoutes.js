@@ -5,7 +5,7 @@ const path = require("path")
 const csvFilePath = path.join(__dirname, "../../assets/data.csv");
 // Matches with "/api/kpis"
 router.route("/")
-  .post(async (req, res) => {
+  .get(async (req, res) => {
     
     console.log("inside kpis route");
     console.log(csvFilePath);
