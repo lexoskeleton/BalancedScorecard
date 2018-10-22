@@ -145,7 +145,7 @@ class Products extends Component {
                 }
               </ul>
                 <Card
-                  title="Top Products"
+                  title="Products"
                   ctTableFullWidth
                   ctTableResponsive
                   content={

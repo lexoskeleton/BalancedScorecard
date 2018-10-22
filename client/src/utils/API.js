@@ -25,6 +25,7 @@ export default {
   getTopProductByMonth: function(month) {
     console.log("month is " + month);
     return axios.get("/api/products/" + month);
+  },
 
   // getUser: function(nameUser) {
   //   return axios.get("/api/auth/register", nameUser);
@@ -34,12 +35,12 @@ export default {
     return axios.get("/api/bscd", profitData);
   },
 
-  getAllTasks: function() {
-    return axios.get("/api/task");
+  getAllTasks: function(task) {
+    return axios.get("/api/task", task);
   },
 
   postTask: function(task) {
-    return axios.post("/api/task");
+    return axios.post("/api/task", task);
   },
 
   deleteTask: function(id) {
