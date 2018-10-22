@@ -21,9 +21,18 @@ export default {
     return axios.post("/api/contact", contactData);
   },
 
-  getTopProducts: function() {
+  getProducts: function() {
     console.log("made it to API");
     return axios.get("/api/products");
+  },
+
+  checkDates: function() {
+    return axios.get("api/products/dates");
+  },
+
+  getTopProductByMonth: function(month) {
+    console.log("month is " + month);
+    return axios.get("/api/products/" + month);
   }
 
 
