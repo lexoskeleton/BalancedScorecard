@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as HashRouter, Route, Switch } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
-import Home from "./pages/home.js";
+// import Home from "./pages/home.js";
 // import App from "./App";
-import NoMatch from "./pages/NoMatch";
+// import NoMatch from "./pages/NoMatch";
 import indexRoutes from "./routes/index.jsx";
 
 import registerServiceWorker from "./registerServiceWorker";

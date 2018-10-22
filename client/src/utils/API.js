@@ -1,14 +1,6 @@
 import axios from "axios";
 
 export default {
-  // searchPlants: function(param) {
-  //   const commonName = param.commonName || null;
-
-  //   if (param.commonName) {
-  //     plantData.commonName = { $regex: commonName, $options: "i" };
-  //   }
-  // },
-  //checks login credentials against database.
   loginSubmit: function(loginData) {
     return axios.post("/api/auth/login", loginData);
   },
@@ -33,6 +25,33 @@ export default {
   getTopProductByMonth: function(month) {
     console.log("month is " + month);
     return axios.get("/api/products/" + month);
+
+  // getUser: function(nameUser) {
+  //   return axios.get("/api/auth/register", nameUser);
+  // },
+
+  getData: function(profitData) {
+    return axios.get("/api/bscd", profitData);
+  },
+
+  getAllTasks: function() {
+    return axios.get("/api/task");
+  },
+
+  postTask: function(task) {
+    return axios.post("/api/task");
+  },
+
+  deleteTask: function(id) {
+    return axios.delete("/api/task/" + id);
+  },
+
+  postCSV: function(csv) {
+    return axios.post("/api/fileUpload", csv);
+  },
+
+  getCSV: function(csv) {
+    return axios.get("/api/fileUpload", csv);
   }
 
 
