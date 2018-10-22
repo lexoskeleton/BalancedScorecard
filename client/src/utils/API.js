@@ -12,6 +12,9 @@ export default {
   contactSubmit: function(contactData) {
     return axios.post("/api/contact", contactData);
   },
+  getUser: function(nameUser) {
+    return axios.get("/api/users", nameUser);
+  },
 
   getProducts: function() {
     console.log("made it to API");
@@ -54,6 +57,4 @@ export default {
   getCSV: function(csv) {
     return axios.get("/api/fileUpload", csv);
   }
-
-
 };
