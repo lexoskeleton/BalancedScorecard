@@ -40,7 +40,7 @@ class Register extends Component {
           API.loginSubmit({ username, password })
             .then(result => {
               localStorage.setItem("jwtToken", result.data.token);
-              localStorage.setItem("beeZUser", this.state.username);
+              localStorage.setItem("appUser", this.state.username);
               this.setState({ message: "" });
 
               this.props.history.push("/home");

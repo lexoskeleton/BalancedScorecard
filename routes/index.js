@@ -5,6 +5,7 @@ const contactRoutes = require("./contact");
 const kpisRoutes = require("./kpis");
 const bscRoutes = require("./bsc");
 const taskRoutes = require("./task");
+const usersDataRoutes = require("./users");
 // const fileInputRoutes = require("./fileInput");
 
 // API Routes
@@ -13,6 +14,7 @@ router.use("/api", contactRoutes);
 router.use("/api", kpisRoutes);
 router.use("/api", bscRoutes);
 router.use("/api", taskRoutes);
+router.use("/api", usersDataRoutes);
 // router.use("api", fileInputRoutes);
 
 //// If no API routes are hit, send the React app
