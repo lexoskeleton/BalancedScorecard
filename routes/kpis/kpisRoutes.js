@@ -5,6 +5,7 @@ const path = require("path");
 const csvFilePath = path.join(__dirname, "../../assets/data.csv");
 
 // Matches with "/api/kpis"
+
 router.route("/").get(async (req, res) => {
   const jsonArray = await csv().fromFile(csvFilePath);
   db.KPI.create(jsonArray)

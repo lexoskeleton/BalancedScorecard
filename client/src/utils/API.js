@@ -16,6 +16,24 @@ export default {
     return axios.get("/api/users", nameUser);
   },
 
+  getProducts: function() {
+    console.log("made it to API");
+    return axios.get("/api/products");
+  },
+
+  checkDates: function() {
+    return axios.get("api/products/dates");
+  },
+
+  getTopProductByMonth: function(month) {
+    console.log("month is " + month);
+    return axios.get("/api/products/" + month);
+  },
+
+  // getUser: function(nameUser) {
+  //   return axios.get("/api/auth/register", nameUser);
+  // },
+
   getData: function(profitData) {
     return axios.get("/api/bscd", profitData);
   },
