@@ -55,7 +55,23 @@ class FileInput extends Component {
     label="Select CSV file"
     onFileLoaded={this.handleCSV}
     />
-
+    <h3>Formatting Instructions</h3>
+    <div><p>Please upload your file using the following column headers</p>
+         <p>Do not change the formatting or capitalization</p>
+          <ul>
+            <li>date</li>
+            <li>title</li>
+            <li>sessions</li>
+            <li>pageViews</li>
+            <li>totalRevenue </li>
+            <li>totalSales</li>
+            <li>totalCost</li>
+            <li>totalProfit</li> 
+            <li>customerSatisfaction</li>
+            <li>employeeSatisfaction</li>
+            <li>customerRetentionRate</li>
+            <li>stockTotal</li>
+            </ul></div>
     </div>
       )
   }
