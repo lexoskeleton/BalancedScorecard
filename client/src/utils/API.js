@@ -51,10 +51,10 @@ export default {
   },
 
   postCSV: function(csv) {
-    return axios.post("/api/fileUpload", csv);
+    return axios.post("/api/kpis/fileinput", csv);
   },
 
   getCSV: function(csv) {
-    return axios.get("/api/fileUpload", csv);
+    return axios.get("/api/kpis/fileinput", csv);
   }
 };
