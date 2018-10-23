@@ -2,74 +2,84 @@ import React, { Component } from "react";
 import {
   ControlLabel,
   Label,
-  // CSVReader,
   FormControl,
   FormGroup
 } from "react-bootstrap";
 import API from "../../utils/API.js";
+import CSVReader from "react-csv-reader";
 import "../../css/products.css";
 
 
 class FileInput extends Component {
-  // addFile = (event: any): void => {
-  //   console.log(event.target.files[0]);
-  // };
-  constructor(props) {
-    super(props);
-    this.state = {
-      csv: ""
-    };
-    // this.fileUpload = this.fileUpload.bind(this);
-  }
-  fileUpload(e) {
-    let files = e.target.files[0]; 
-    console.log(files);
-  
-
-  const data = new FormData();
-  data.append('file', this.files);
-  data.append('filename', this.value);
-  console.log(data);
-
-  if (files === ".csv") {
-    API.postCSV
-    .then((response) => {
-      response.json().then((body) => {
-        this.setState({ csv: `http://localhost:3000/${body.file}` });
-      });
-    });
+  state ={
+    csv: []
   }
 
-  // fetch('http://localhost:3000/fileUpload', {
-  //   method: 'POST',
-  //   body: data,
-  // }).then((response) => {
-  //   response.json().then((body) => {
-  //     this.setState({ csv: `http://localhost:3000/${body.file}` });
-  //   });
-  // });
-}
+
+  handleCSV = data => {
+    // console.log(data);
+    // console.log(data[1][1]);
+    let convertedData = data
+      .filter((row, index) => index > 0)
+      .map(row=> ({
+      [data[0][0].trim()]: row[0],
+      [data[0][1].trim()]: row[1],
+      [data[0][2].trim()]: row[2],
+      [data[0][3].trim()]: row[3],
+      [data[0][4].trim()]: row[4],
+      [data[0][5].trim()]: row[5],
+      [data[0][6].trim()]: row[6],
+      [data[0][7].trim()]: row[7],
+      [data[0][8].trim()]: row[8],
+      [data[0][9].trim()]: row[9],
+      [data[0][10].trim()]: row[10],
+      [data[0][11].trim()]: row[11]
+    }))
+    //console.log(convertedData);
+    API.postCSV(convertedData)
+    .then(result => {
+      console.log(result);
+      this.props.history.replace("/dashboard");;
+    })
+
+    //this.setState({csv: convertedData});
+  }
+
+
+
+
 
   render() {
-    return (
-      <div className="content">
-        <FormGroup>
-          <ControlLabel htmlFor="fileUpload" style={{ cursor: "pointer" }}>
-            <h3>
-              <Label bsStyle="success">Add CSV file</Label>
-            </h3>
-            <FormControl
-              id="fileUpload"
-              type="file"
-              accept=".csv"
-              onChange={this.fileUpload.bind(this)}
-              style={{ display: "none" }}
-            />
-          </ControlLabel>
-        </FormGroup>
-      </div>
-    );
+    return (<div className = "container">
+    <CSVReader
+    label="Select CSV file"
+    onFileLoaded={this.handleCSV}
+    />
+
+    </div>
+      )
   }
+
+  //   return (
+  //     <div className="content">
+  //       <FormGroup>
+  //         <ControlLabel htmlFor="fileUpload" style={{ cursor: "pointer" }}>
+  //           <h3>
+  //             <Label bsStyle="success">Add CSV file</Label>
+  //           </h3>
+  //           <FormControl
+  //             id="fileUpload"
+  //             type="file"
+  //             accept=".csv"
+  //             onChange={this.fileUpload}
+  //             style={{ display: "none" }}
+  //           />
+  //         </ControlLabel>
+  //       </FormGroup>
+  //     </div>
+  //   );
+  // }
 }
+
 
 export default FileInput;
