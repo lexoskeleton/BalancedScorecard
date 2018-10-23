@@ -47,7 +47,7 @@ const dashboardRoutes = [
     component: UserProfile
   },
 
-  { redirect: true, path: "/", to: "/dashboard", name: "Dashboard" }
+  { redirect: true, path: "/", to: "/fileinput", name: "File Upload" }
 ];
 
 export default dashboardRoutes;
