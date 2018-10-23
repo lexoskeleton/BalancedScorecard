@@ -39,7 +39,7 @@ class Login extends Component {
         localStorage.setItem("appUser", this.state.username);
         this.setState({ message: "" });
 
-        this.props.history.push("/home");
+        this.props.history.push("/dashboard");
       })
       .catch(error => {
         if (error.response.status === 401) {
