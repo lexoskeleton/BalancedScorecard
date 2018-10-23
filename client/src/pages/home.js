@@ -25,9 +25,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-      "jwtToken"
-    );
+    axios.defaults.headers.common["Authorization"] = this.state.jwtToken;
   }
 
   componentDidUpdate(e) {
@@ -48,48 +46,52 @@ class Home extends Component {
   // logout = event => {
   //   event.preventDefault();
   //   localStorage.removeItem("jwtToken");
-  //   localStorage.removeItem("beeZUser");
-  //   this.props.history.push("/login");
+  //   localStorage.removeItem("appUser");
+  //   this.props.history.push("/");
   // };
 
   render() {
     return (
-      // <div>
-      //   {this.state.jwtToken ? (
-      <div className="wrapper">
-        <NotificationSystem ref="notificationSystem" style={style} />
-        <Sidebar {...this.props} />
-        <div id="main-panel" className="main-panel" ref="mainPanel">
-          <Header {...this.props} />
-          <Switch>
-            {dashboardRoutes.map((prop, key) => {
-              if (prop.name === "Notifications")
-                return (
-                  <Route
-                    path={prop.path}
-                    key={key}
-                    render={routeProps => (
-                      <prop.component
-                        {...routeProps}
-                        handleClick={this.handleNotificationClick}
+      <div>
+        {localStorage.getItem("jwtToken") ? (
+          <div className="wrapper">
+            <NotificationSystem ref="notificationSystem" style={style} />
+            <Sidebar {...this.props} />
+            <div id="main-panel" className="main-panel" ref="mainPanel">
+              <Header {...this.props} />
+              <Switch>
+                {dashboardRoutes.map((prop, key) => {
+                  if (prop.name === "Notifications")
+                    return (
+                      <Route
+                        path={prop.path}
+                        key={key}
+                        render={routeProps => (
+                          <prop.component
+                            {...routeProps}
+                            handleClick={this.handleNotificationClick}
+                          />
+                        )}
                       />
-                    )}
-                  />
-                );
-              if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.to} key={key} />;
-              return (
-                <Route path={prop.path} component={prop.component} key={key} />
-              );
-            })}
-          </Switch>
-          <Footer />
-        </div>
+                    );
+                  if (prop.redirect)
+                    return <Redirect from={prop.path} to={prop.to} key={key} />;
+                  return (
+                    <Route
+                      path={prop.path}
+                      component={prop.component}
+                      key={key}
+                    />
+                  );
+                })}
+              </Switch>
+              <Footer />
+            </div>
+          </div>
+        ) : (
+          this.props.history.push("/register")
+        )}
       </div>
-      //   ) : (
-      //     this.props.history.push("/")
-      //   )}
-      // </div>
     );
   }
 }

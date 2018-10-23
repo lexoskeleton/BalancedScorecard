@@ -78,11 +78,9 @@ class Dashboard extends Component {
                       {this.state.tasks.map(task => {
                         return (
                           <ListItem key={task._id}>
-                            <a href={"/books/" + task._id}>
                               <strong>
                                 {task.tasks_title}
                               </strong>
-                            </a>
                             <DeleteBtn onClick={() => this.deleteTask(task._id)} />
                           </ListItem>
                         );

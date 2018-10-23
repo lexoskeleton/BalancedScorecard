@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import { Row, Card } from "react-materialize";
+import { Row, Panel } from "react-bootstrap";
 
 class NoMatch extends Component {
-  logout = event => {
-    event.preventDefault();
-    localStorage.removeItem("jwtToken");
-    localStorage.removeItem("beeZUser");
-    this.props.history.push("/login");
-  };
+  // logout = event => {
+  //   event.preventDefault();
+  //   localStorage.removeItem("jwtToken");
+  //   localStorage.removeItem("appUser");
+  //   this.props.history.push("/");
+  // };
 
   render() {
     return (
       <Row>
-        <Card className="orange-text white center-align">
+        <Panel className="orange-text white center-align">
           <h1 className="center">Ouch! This page doesn't exist.</h1>
-        </Card>
+        </Panel>
       </Row>
     );
   }

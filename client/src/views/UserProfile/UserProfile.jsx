@@ -10,18 +10,27 @@ class UserProfile extends Component {
   state = {
     firstName: [],
     lastName: [],
-    email: []
+    email: [],
+    userName: []
   };
 
-  // componentDidMount() {
-  //   this.userData();
-  // }
+  componentDidMount() {
+    this.userData();
+  }
 
-  // userData = () => {
-  //   API.getUser()
-  //     .then(res => this.setState({ firstName: res.data[0].firstname }))
-  //     .catch(err => console.log(err));
-  // };
+  userData = () => {
+    API.getUser()
+      .then(res =>
+        this.setState({
+          firstName: res.data[0].firstname,
+          lastName: res.data[0].lastname,
+          userName: res.data[0].username,
+          email: res.data[0].username
+        })
+      )
+
+      .catch(err => console.log(err));
+  };
   render() {
     return (
       <div className="content">
@@ -33,28 +42,29 @@ class UserProfile extends Component {
                 content={
                   <form>
                     <FormInputs
-                      ncols={["col-md-5", "col-md-3", "col-md-4"]}
+                      ncols={["col-md-5", "col-md-5"]}
                       proprieties={[
-                        {
-                          label: "Company (disabled) ",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Company",
-                          defaultValue: "Vision",
-                          disabled: true
-                        },
+                        // {
+                        //   label: "Company (disabled) ",
+                        //   type: "text",
+                        //   bsClass: "form-control",
+                        //   placeholder: "Company",
+                        //   defaultValue: "Vision",
+                        //   disabled: true
+                        // },
                         {
                           label: "Username",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Username",
-                          defaultValue: "me"
+                          defaultValue: this.state.userName
                         },
                         {
                           label: "Email address",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: "Email"
+                          placeholder: "Email",
+                          defaultValue: this.state.email
                         }
                       ]}
                     />
@@ -66,14 +76,14 @@ class UserProfile extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "First name",
-                          defaultValue: ""
+                          defaultValue: this.state.firstName
                         },
                         {
                           label: "Last name",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Last name",
-                          defaultValue: ""
+                          defaultValue: this.state.lastName
                         }
                       ]}
                     />
@@ -125,7 +135,6 @@ class UserProfile extends Component {
             <Col md={4} />
           </Row>
         </Grid>
-        >
       </div>
     );
   }
