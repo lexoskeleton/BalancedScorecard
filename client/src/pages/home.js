@@ -89,7 +89,7 @@ class Home extends Component {
             </div>
           </div>
         ) : (
-          this.props.history.push("/register")
+          this.props.history.push("/")
         )}
       </div>
     );
