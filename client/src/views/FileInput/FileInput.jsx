@@ -1,27 +1,17 @@
 import React, { Component } from "react";
-import {
-  ControlLabel,
-  Label,
-  FormControl,
-  FormGroup
-} from "react-bootstrap";
 import API from "../../utils/API.js";
 import CSVReader from "react-csv-reader";
 import "../../css/products.css";
 
-
 class FileInput extends Component {
-  state ={
+  state = {
     csv: []
-  }
-
+  };
 
   handleCSV = data => {
     // console.log(data);
     // console.log(data[1][1]);
-    let convertedData = data
-      .filter((row, index) => index > 0)
-      .map(row=> ({
+    let convertedData = data.filter((row, index) => index > 0).map(row => ({
       [data[0][0].trim()]: row[0],
       [data[0][1].trim()]: row[1],
       [data[0][2].trim()]: row[2],
@@ -34,30 +24,24 @@ class FileInput extends Component {
       [data[0][9].trim()]: row[9],
       [data[0][10].trim()]: row[10],
       [data[0][11].trim()]: row[11]
-    }))
+    }));
     //console.log(convertedData);
-    API.postCSV(convertedData)
-    .then(result => {
+    API.postCSV(convertedData).then(result => {
       console.log(result);
-      this.props.history.replace("/dashboard");;
-    })
+      this.props.history.replace("/dashboard");
+    });
 
     //this.setState({csv: convertedData});
-  }
-
-
-
-
+  };
 
   render() {
-    return (<div className = "container">
-    <CSVReader
-    label="Select CSV file"
-    onFileLoaded={this.handleCSV}
-    />
-    <h3>Formatting Instructions</h3>
-    <div><p>Please upload your file using the following column headers</p>
-         <p>Do not change the formatting or capitalization</p>
+    return (
+      <div className="container">
+        <CSVReader label="Select CSV file" onFileLoaded={this.handleCSV} />
+        <h3>Formatting Instructions</h3>
+        <div>
+          <p>Please upload your file using the following column headers</p>
+          <p>Do not change the formatting or capitalization</p>
           <ul>
             <li>date</li>
             <li>title</li>
@@ -66,14 +50,15 @@ class FileInput extends Component {
             <li>totalRevenue </li>
             <li>totalSales</li>
             <li>totalCost</li>
-            <li>totalProfit</li> 
+            <li>totalProfit</li>
             <li>customerSatisfaction</li>
             <li>employeeSatisfaction</li>
             <li>customerRetentionRate</li>
             <li>stockTotal</li>
-            </ul></div>
-    </div>
-      )
+          </ul>
+        </div>
+      </div>
+    );
   }
 
   //   return (
@@ -96,6 +81,5 @@ class FileInput extends Component {
   //   );
   // }
 }
-
 
 export default FileInput;
