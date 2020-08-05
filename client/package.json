@@ -7,7 +7,7 @@
     "axios": "^0.18.0",
     "bootstrap": "3.3.7",
     "chartist": "0.10.1",
-    "express-fileupload": "^1.0.0",
+    "express-fileupload": "^1.1.9",
     "moment": "^2.22.2",
     "node-sass": "4.6.1",
     "node-sass-chokidar": "0.0.3",
